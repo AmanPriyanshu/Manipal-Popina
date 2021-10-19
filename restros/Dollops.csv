@@ -1,0 +1,215 @@
+names,prices
+Veg Cream Soup,110.0
+Tomato Soup,110.0
+Veg Wonton Soup,110.0
+Veg Sweet Corn Soup,110.0
+Veg Manchow Soup,110.0
+Veg Hot and Sour Soup,110.0
+Mushroom Soup,120.0
+Chicken Sweet Corn Soup,120.0
+Chicken Hot and Sour Soup,120.0
+Chicken Manchow Soup,120.0
+Chicken Lung Fung Soup,120.0
+Chicken Wonton Soup,120.0
+Chicken Lemon Coriander Soup,120.0
+Chicken Wonton Noodles Soup,140.0
+Salad,90.0
+Paneer Tikka Dry,180.0
+Malai Chaap,190.0
+Banjara Kabab,200.0
+Chilli Kabab,200.0
+Chicken Tikka Dry,200.0
+Chicken Karachi,200.0
+Chicken Hariyali Kabab,200.0
+Chicken Seekh Kabab,200.0
+Tandoori Chicken,210.0
+Chicken Kalmi Kabab,180.0
+Mushroom Tikka,180.0
+Paneer 65,180.0
+Chicken Kabab Fry,200.0
+Chicken 65,200.0
+Mutton Pepper Fry,350.0
+Aloo Fry,150.0
+Aloo Jeera,150.0
+Mixed Black Dal,160.0
+Yellow Dal,160.0
+Dal Palak,160.0
+Bhindi Fry,160.0
+Bhindi Masala,170.0
+Vegetable Kurma,170.0
+Vegetable Kadai,170.0
+Veg Kolhapuri,170.0
+Veg Jalfrezi,170.0
+Chana Masala,170.0
+Green Peas Masala,170.0
+Aloo Gobi,170.0
+Gobi 65,170.0
+Malai Kofta,170.0
+Methi Malai Matar,170.0
+Methi Malai Paneer,180.0
+Paneer Kadai,180.0
+Paneer Tikka Masala,180.0
+Paneer Palak,180.0
+Paneer Butter Masala,180.0
+Paneer Do Pyaza,180.0
+Paneer Kolhapuri,180.0
+Paneer Kali Mirchi,180.0
+Paneer Shahi,180.0
+Paneer Kofta,180.0
+Paneer Matar,180.0
+Paneer 65,180.0
+Paneer Bhurji,180.0
+Mushroom Masala,180.0
+Mushroom Matar,180.0
+Egg Bhurji,130.0
+Egg Masala,160.0
+Chicken Liver Fry,150.0
+Chicken Mughlai,200.0
+Chicken Kadai,200.0
+Chicken Do Pyaza,200.0
+Butter Chicken,200.0
+Chicken Hariyali Masala,200.0
+Chicken Tikka Masala,200.0
+Chicken Masala,200.0
+Chicken Kolhapuri,200.0
+Chicken Rara,200.0
+Mutton Rogan Josh,350.0
+Mutton Masala,350.0
+Roti,40.0
+Kulcha,40.0
+Paratha,50.0
+Pudina Kulcha,55.0
+Onion Kulcha,55.0
+Naan,50.0
+Butter Naan,60.0
+Aloo Paratha,60.0
+Garlic Naan,65.0
+Cheese Naan,70.0
+Paneer Stuffed Naan,80.0
+Chapati,30.0
+Butter Chapati,40.0
+Chicken Stuffed Paratha,120.0
+Basmati Rice,70.0
+Veg Pulao,150.0
+Ghee Rice,130.0
+Jeera Rice,130.0
+Curd Rice,130.0
+Palak Rice,160.0
+Dal Khichdi,160.0
+Veg Steamed Rice,160.0
+Egg Pulao,150.0
+Chicken Pulao,190.0
+Chicken Steamed Rice,180.0
+Steamed Rice with Minced Chicken Meat Sauce,180.0
+Gobi Manchurian,150.0
+Gobi Chilli,150.0
+Veg Crispy Dry,150.0
+Cut Vegetable Veg Manchurian,150.0
+Veg Ball Manchurian,150.0
+Veg Ball in Garlic Sauce,150.0
+Paneer Manchurian,160.0
+Paneer Chilli,160.0
+Paneer Schezwan,160.0
+Mushroom Manchurian,160.0
+Mushroom Chilli,160.0
+Baby Corn Manchurian,160.0
+Baby Corn Chilli,160.0
+Manchurian Chicken,180.0
+Chicken Chilli,180.0
+Chicken Singapore,180.0
+Chicken Hong Kong,180.0
+Chicken Garlic,180.0
+Diced Chicken Dry with Cashew,180.0
+Chicken Ginger,180.0
+Chicken Hunan,180.0
+Chicken Pepper Fry Dry,180.0
+Chicken Peanut,180.0
+Chicken Lemon,180.0
+Chicken Spinach Dry,180.0
+Chicken Schezwan,180.0
+Chicken Lollipop Dry,190.0
+Drums of Heaven Dry,190.0
+Wonton Chicken Fried Dry,190.0
+Veg Fried Rice,130.0
+Paneer Fried Rice,140.0
+Mushroom Fried Rice,140.0
+Veg Ginger Fried Rice,140.0
+Veg Schezwan Fried Rice,160.0
+Veg Singapore Fried Rice,150.0
+Egg Fried Rice,130.0
+Egg Ginger Fried Rice,140.0
+Egg Schezwan Fried Rice,160.0
+Egg Singapore Fried Rice,150.0
+Chicken Fried Rice,150.0
+Chicken Ginger Fried Rice,160.0
+Chicken Schezwan Fried Rice,170.0
+Chicken Singapore Fried Rice,160.0
+Mixed Fried Rice,160.0
+Veg Noodles,140.0
+Veg Singapore Noodles,150.0
+Veg Schezwan Noodles,160.0
+Veg American Chopsuey,160.0
+Veg Chinese Chopsuey,160.0
+Egg Noodles,140.0
+Egg Schezwan Noodles,160.0
+Chicken Noodles,150.0
+Chicken Singapore Noodles,160.0
+Chicken Schezwan Noodles,170.0
+Chicken American Chopsuey,180.0
+Chicken Chinese Chopsuey,180.0
+Mixed Noodles,160.0
+Veg Burger,70.0
+Veg Cheese Burger,90.0
+Egg Cheese Burger,90.0
+Chicken Burger,120.0
+Chicken Egg Burger,130.0
+Chicken Cheese Burger,140.0
+Chicken Egg Cheese Burger,150.0
+Veg Sandwich,60.0
+Tomato Cheese Sandwich,70.0
+Egg Sandwich,60.0
+Egg Cheese Sandwich,80.0
+Chicken Sandwich,120.0
+Chicken Cheese Sandwich,140.0
+Veg Frankie,80.0
+Paneer Frankie,90.0
+Egg Frankie,80.0
+Chicken Frankie,110.0
+Cheese Toast,50.0
+Veg Spring Roll,90.0
+French Fries,80.0
+Fried Eggs,50.0
+Omelette,80.0
+Egg Spring Roll,100.0
+Chicken Spring Roll,130.0
+Curd,50.0
+Onion Raita,60.0
+Oreo Cheese Ball,40.0
+Chocolate Cookies Cake,80.0
+Caramel Custard,80.0
+Brownie,90.0
+Brownie with Chocolate Sauce,120.0
+Brownie with Vanilla Ice Cream,140.0
+Brownie with Chocolate Sauce and Ice Cream,160.0
+Oreo Cheesecake,130.0
+Blueberry Cheesecake,140.0
+German Chocolate,140.0
+Chocolate Sundae Ice Cream,80.0
+Strawberry Sundae Ice Cream,80.0
+Fruit Salad with Vanilla Ice Cream,130.0
+Belgian Chocolate Ice Cream [1 Scoop],70.0
+Swiss Chocolate Ice Cream [1 Scoop],70.0
+Irish Coffee Ice Cream [1 Scoop],70.0
+Vanilla Shake,120.0
+Chocolate Shake,120.0
+Strawberry Shake,120.0
+Butterscotch Shake,120.0
+Chikku Shake,120.0
+Mango Shake,120.0
+Irish Coffee Shake,120.0
+Lime Juice,50.0
+Watermelon Juice,90.0
+Grape Juice,90.0
+Pineapple Juice,90.0
+Orange Juice,90.0
+Mixed Fruit Juice,90.0
