@@ -17,19 +17,19 @@ def remove_x(string):
 			pass
 	return string1
 
-def app(restaurants, option, names):
+def app(restaurants, option, names, mycursor):
 	restro_id_selected = names.index(option)
 	st.title("Reviews & Ratings - "+option)
 	if restaurants[restro_id_selected][6]!=-1:
 		st.markdown("#### Overall Rating:- "+str(restaurants[restro_id_selected][6]))
-	reviews = pd.read_csv("./Data/ratings.csv")
-	reviews = reviews.values
-	review_items = [i for i in reviews if i[0]==restaurants[restro_id_selected][0]]
+	mycursor.execute("SELECT * FROM Ratings WHERE restro_id="+str(restaurants[restro_id_selected][0]))
+	review_items = mycursor.fetchall()
+	review_items = [[j for j in i] for i in review_items]
 	if len(review_items)>0:
 		st.markdown('##### Most Recent Reviews:')
 		review_items = np.array(review_items)
-		review_items.T[-1] = [str(i) if i!=-1 else '' for i in review_items.T[-1]]
-		review_items.T[-2] = [str(i) if i!=-1 else '' for i in review_items.T[-2]]
+		review_items.T[-1] = [str(i) if str(i)!='-1.0' else '' for i in review_items.T[-1]]
+		review_items.T[-2] = [str(i) if str(i)!='-1.0' else '' for i in review_items.T[-2]]
 		review_items = review_items.T[1:].T
 		temp = review_items.T[0].copy()
 		review_items.T[0] = review_items.T[1]

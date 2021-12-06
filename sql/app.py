@@ -4,8 +4,23 @@ from Pages.Home import make_map
 from streamlit_folium import folium_static
 import folium
 import pandas as pd
+import mysql.connector
+from make_sql import delete_tables, create_tables, insert_tables
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="student",
+  database="LabProject"
+)
+mycursor = mydb.cursor()
+mycursor.execute("SELECT name FROM Restaurant")
+names = [str(i[0]) for i in mycursor.fetchall()]
+mycursor.execute("SELECT * FROM Restaurant")
+restaurants = [[j for j in i] for i in mycursor.fetchall()]		
 
 def app():
+	global mycursor
 	st.sidebar.image('logo.png', use_column_width=500, width=300)
 	st.sidebar.title("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAVIGATION")
 	st.markdown("""
@@ -19,21 +34,18 @@ def app():
 	with emp.container():
 		st.title("Order From The Best Restaurants Near You!")
 		placeholder_map = st.empty()
-		restaurants = pd.read_csv("./Data/restaurant.csv")
-		restaurants = restaurants.values
 		with placeholder_map.container():
 			main_map = make_map(restaurants)
 			folium_static(main_map)
-		names = [row[1].replace('&amp;', '&') for row in restaurants]
 		option = st.selectbox("Select Your Restaurant!", names)
 	if st.sidebar.button('Explore'):
-		Home.app(placeholder_map, restaurants, names, option)
+		Home.app(placeholder_map, restaurants, names, option, mycursor)
 	if st.sidebar.button('Menu'):
 		emp.empty()
-		Menu.app(restaurants, option, names)
+		Menu.app(restaurants, option, names, mycursor)
 	if st.sidebar.button('Reviews & Ratings'):
 		emp.empty()
-		Reviews.app(restaurants, option, names)
+		Reviews.app(restaurants, option, names, mycursor)
 	if st.sidebar.button('About App'):
 		emp.empty()
 		About_App.app()

@@ -29,7 +29,7 @@ def make_map(df, display_all=True):
 		).add_to(main_map)
 	return main_map
 
-def app(placeholder_map, restaurants, names, option):
+def app(placeholder_map, restaurants, names, option, mycursor):
 	if True:
 		restro_id_selected = names.index(option)
 		with placeholder_map.container():
@@ -39,17 +39,18 @@ def app(placeholder_map, restaurants, names, option):
 		with placeholder_menu.container():
 			st.markdown('#### Ordering Link:')
 			st.write('[LINK]('+restaurants[restro_id_selected][2]+')')
-			contacts = pd.read_csv("./Data/contact.csv")
-			contacts = contacts.values
-			contact_items = [i for i in contacts if i[0]==restaurants[restro_id_selected][0]]
+			mycursor.execute("SELECT t.c_name, t.phone_no FROM (SELECT * FROM Contact WHERE restro_id="+str(restaurants[restro_id_selected][0])+") AS t")
+			contacts = mycursor.fetchall()
+			contacts = [[j for j in i] for i in contacts]
+			contact_items = contacts
 			st.markdown("#### Contacts:")
 			for contact in contact_items:
-				st.info(contact[1]+':-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+91 '+str(contact[2])[2:])
+				st.info(contact[0]+':-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+91 '+str(contact[1])[2:])
 			if len(contact_items)==0:
 				st.error("No Contacts")
-			similars = pd.read_csv('./Data/similarRestaurant.csv')
-			similars = similars.values
-			similar_items = [i for i in similars if i[0]==restaurants[restro_id_selected][0]]
+			mycursor.execute("SELECT * FROM SimilarRestaurant WHERE restro_id="+str(restaurants[restro_id_selected][0]))
+			similar_items = mycursor.fetchall()
+			similar_items = [[j for j in i] for i in similar_items]
 			if len(similar_items)>0:
 				st.markdown("#### Similar Restaurants")
 				for index, similar in enumerate(similar_items):
