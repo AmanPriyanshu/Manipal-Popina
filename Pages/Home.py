@@ -53,4 +53,6 @@ def app(placeholder_map, restaurants, names, option):
 			if len(similar_items)>0:
 				st.markdown("#### Similar Restaurants")
 				for index, similar in enumerate(similar_items):
-					st.markdown('[Restaurant '+str(index+1)+']('+str(similar[1])+')')
+					r_name = str(similar[1]).replace('https://www.zomato.com/manipal/', '').replace('-', ' ')
+					r_name = ' '.join([i[0].upper()+i[1:] if len(i)>1 else i.upper() for i in r_name.split()])
+					st.markdown('[Restaurant: '+r_name+']('+str(similar[1])+')')
