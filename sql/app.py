@@ -7,6 +7,7 @@ import pandas as pd
 import mysql.connector
 from make_sql import delete_tables, create_tables, insert_tables
 
+res1 = "Thank You for the Review!"
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
@@ -38,21 +39,43 @@ def app():
 			main_map = make_map(restaurants)
 			folium_static(main_map)
 		option = st.selectbox("Select Your Restaurant!", names)
+		restro_id_selected = names.index(option)
+		restro_id = restaurants[restro_id_selected][0]
+	emp_rev = st.empty()
+	with emp_rev.container():
+		st.markdown("# Enter A Review!")
+		user_profile = st.text_input("Enter Profile Name:")
+		review = st.text_area("Review", '''The food was some of the b....
+			''', height=3)
+		rating = st.number_input("Enter rating:", 0, 5, step=1)
+		rating_type = st.radio("Enter Rating Type:", ('Delivery', 'Dine-In'))
+		if st.button("SUBMIT"):
+			if rating_type=='Delivery':
+				mycursor.execute(f'CALL insert_reviewinfo({restro_id}, \"{review}\", \"{user_profile}\", {rating}, -1)')
+			else:
+				mycursor.execute(f'CALL insert_reviewinfo({restro_id}, \"{review}\", \"{user_profile}\", -1, {rating})')
+			mydb.commit()
+			res = mycursor.fetchall()
+			st.success(res1)
+
 	if st.sidebar.button('Explore'):
 		Home.app(placeholder_map, restaurants, names, option, mycursor)
+		emp_rev.empty()
 	if st.sidebar.button('Menu'):
 		emp.empty()
 		Menu.app(restaurants, option, names, mycursor)
+		emp_rev.empty()
 	if st.sidebar.button('Reviews & Ratings'):
 		emp.empty()
 		Reviews.app(restaurants, option, names, mycursor)
 	if st.sidebar.button('About App'):
 		emp.empty()
 		About_App.app()
+		emp_rev.empty()
 	if st.sidebar.button('Team'):
 		emp.empty()
 		Team.app()
-
+		emp_rev.empty()
 
 if __name__ == '__main__':
 	app()

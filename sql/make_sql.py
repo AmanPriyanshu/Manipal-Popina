@@ -2,8 +2,15 @@ import pandas as pd
 import numpy as np
 import mysql.connector
 
+class Cursorer:
+	def __init__(self):
+		self.i = None
+	def execute(self, i):
+		self.i = i
+mycursor1 = Cursorer()
+
 def delete_tables(mycursor):
-	#mycursor.execute("DROP TABLE Ratings")
+	mycursor.execute("DROP TABLE Ratings")
 	mycursor.execute("DROP TABLE Menu")
 	mycursor.execute("DROP TABLE SimilarRestaurant")
 	mycursor.execute("DROP TABLE Contact")
@@ -73,6 +80,19 @@ def insert_tables(mycursor):
 		mycursor.execute(f"INSERT INTO Ratings VALUES ({row[0]}, \"{row[1]}\", \"{row[2]}\", {row[3]}, {row[4]})")
 		print(f"INSERT INTO Ratings VALUES ({row[0]}, \"{row[1]}\", \"{row[2]}\", {row[3]}, {row[4]})")
 
+
+def create_trigger_and_procedure(mycursor):
+	mycursor1.execute('''CREATE TRIGGER InserReviewItem
+		AFTER INSERT 
+		ON RATINGS FOR EACH ROW
+		SELECT 'Thank You for the Review!'
+		''')
+	mycursor1.execute('''Create PROCEDURE insert_reviewinfo(IN p_restro_id int, IN p_review varchar(2000), IN p_profile_name Varchar(200), IN p_delivery_rating DOUBLE, IN p_dine_in_rating DOUBLE)
+    BEGIN
+    insert into Ratings(restro_id, review, profile_name, delivery_rating, dine_in_rating) values (p_restro_id, p_review, p_profile_name, p_delivery_rating, p_dine_in_rating);
+    END
+	''')
+
 if __name__ == '__main__':
 	mydb = mysql.connector.connect(
 		host="localhost",
@@ -81,7 +101,8 @@ if __name__ == '__main__':
 		database="LabProject"
 	)
 	mycursor = mydb.cursor()
-	#delete_tables(mycursor)
+	delete_tables(mycursor)
 	create_tables(mycursor)
 	insert_tables(mycursor)
+	create_trigger_and_procedure(mycursor)
 	mydb.commit()
