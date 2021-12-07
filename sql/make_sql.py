@@ -87,7 +87,7 @@ def create_trigger_and_procedure(mycursor):
 		ON RATINGS FOR EACH ROW
 		SELECT 'Thank You for the Review!'
 		''')
-	mycursor1.execute('''Create PROCEDURE insert_reviewinfo(IN p_restro_id int, IN p_review varchar(2000), IN p_profile_name Varchar(200), IN p_delivery_rating DOUBLE, IN p_dine_in_rating DOUBLE)
+	mycursor.execute('''Create PROCEDURE insert_reviewinfo(IN p_restro_id int, IN p_review varchar(2000), IN p_profile_name Varchar(200), IN p_delivery_rating DOUBLE, IN p_dine_in_rating DOUBLE)
     BEGIN
     insert into Ratings(restro_id, review, profile_name, delivery_rating, dine_in_rating) values (p_restro_id, p_review, p_profile_name, p_delivery_rating, p_dine_in_rating);
     END
@@ -98,10 +98,10 @@ if __name__ == '__main__':
 		host="localhost",
 		user="root",
 		password="student",
-		database="LabProject"
+		database="labp"
 	)
 	mycursor = mydb.cursor()
-	delete_tables(mycursor)
+	#delete_tables(mycursor)
 	create_tables(mycursor)
 	insert_tables(mycursor)
 	create_trigger_and_procedure(mycursor)

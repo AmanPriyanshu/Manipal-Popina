@@ -17,7 +17,7 @@ def app():
 	""", unsafe_allow_html=True)
 	emp = st.empty()
 	with emp.container():
-		st.title("Order From The Best Restaurants Near You!")
+		st.title("Find The Best Restaurants Near You!")
 		placeholder_map = st.empty()
 		restaurants = pd.read_csv("./Data/restaurant.csv")
 		restaurants = restaurants.values

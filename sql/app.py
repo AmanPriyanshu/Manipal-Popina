@@ -1,3 +1,6 @@
+# CREATE DATABASE labp;
+# USE labp;
+
 import streamlit as st
 from Pages import Home, About_App, Reviews, Menu, Team
 from Pages.Home import make_map
@@ -12,7 +15,7 @@ mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="student",
-  database="LabProject"
+  database="labp"
 )
 mycursor = mydb.cursor()
 mycursor.execute("SELECT name FROM Restaurant")
